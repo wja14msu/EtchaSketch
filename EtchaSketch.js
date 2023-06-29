@@ -2,10 +2,30 @@ const div = document.createElement("div");
 
 const gridDimensions = document.getElementById("grid-dimensions");
 
-document.getElementById("container").appendChild(div);
+const form = document.getElementById('form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const dimensions = document.getElementById('dimension-input').value;
+    console.log(dimensions);
+    return dimensions
+})
 
-function getGridDimension(num) {
-    // input, ask user for number
-    gridDimensions = gridDimensions.value;
+const btn = document.getElementById('submit');
 
+form.addEventListener('click', function() {
+    document.getElementById("dimension-input").value;
+})
+
+//document.getElementById("container").appendChild(div);
+
+document.body.onload = addElement;
+function addElement() {
+    const newDiv = document.createElement("div");
+
+    const newContent = document.createTextNode("This is text", dimensions);
+
+    newDiv.appendChild(newContent);
+
+    const currentDiv = document.getElementById("input-container");
+    document.body.insertBefore(newDiv, currentDiv);
 }
