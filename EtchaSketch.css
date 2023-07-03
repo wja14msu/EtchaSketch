@@ -1,8 +1,8 @@
 * {
-
+    background-color: grey;
 }
 
-.container {
+#container {
 
 }
 
@@ -13,4 +13,12 @@
 #input-container {
     display: flex;
     flex-direction: column;
+}
+
+#practice-pixel {
+    border: solid red;
+}
+
+#practice-pixel:hover {
+    background-color: rebeccapurple;
 }
