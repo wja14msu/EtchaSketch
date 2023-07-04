@@ -1,42 +1,16 @@
-const div = document.createElement("div");
+const form = document.getElementById('inputForm');
 
-const gridDimensions = document.getElementById("grid-dimensions");
-const container = document.getElementById("container");
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-const form = document.getElementById('form');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const dimensions = document.getElementById('dimension-input').value;
-    console.log(dimensions);
-    return dimensions
-})
-
-const btn = document.getElementById('submit');
-
-form.addEventListener('click', function() {
-    document.getElementById("dimension-input").value;
-    
-})
-
-//document.getElementById("container").appendChild(div);
-
-document.body.onload = addElement;
-function addElement() {
-    const newDiv = document.createElement("div");
-
-    const newContent = document.createTextNode("This is text", gridDimensions);
-
-    newDiv.appendChild(newContent);
-
-    const currentDiv = document.getElementById("input-container");
-    document.body.insertBefore(newDiv, currentDiv);
-}
-
-function addDiv() {
-    let numDivs = document.getElementById("grid-dimensions").value;
-    for (i = 0; i <= numDivs; i++) {
-        let newDiv = document.createElement("div");
-        container.appendChild(newDiv);
+    let input = form.querySelector('input');
+    let boxInput = input.value;
+    let box = document.getElementById('boxes');
+    for (let i = 1; i <= boxInput; i++) {
+        let div = document.createElement('div');
+        div.textContent = `Box-${i}`
+        box.appendChild(div);
     }
-}
+    console.log(boxInput);
+})
 

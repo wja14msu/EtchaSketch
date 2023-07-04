@@ -22,3 +22,12 @@
 #practice-pixel:hover {
     background-color: rebeccapurple;
 }
+
+.boxes {
+    border: goldenrod solid;
+
+}
+
+#boxes > div {
+    border: solid orange;
+}

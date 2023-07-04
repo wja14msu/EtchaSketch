@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etcha Sketch</title>
     <script src="EtchaSketch.js" defer></script>
     <link rel="stylesheet" href="EtchaSketch.css">
 </head>
 <body>
-    <div id="input-container">
+    <div class="input-container">
         <!--<label for="grid-dimensions">Enter a number to establish grid dimensions.</label>
         <input type="number" id="grid-dimensions" name="grid-dimensions">
         <button id="grid-dimensions">Click to submit dimensions</button>-->
 
-        <form id="form">
-            <input id="dimension-input" placeholder="enter a number" required>
+        <form id="inputForm">
+            <input id="input-box" placeholder="enter a number" required>
             <button type="submit">Submit</button>
         </form>
-
     </div>
 
-    <div id="container">
-        <div id="practice-pixel">
-            This is text inside a practice pixel.
-        </div>
+    <div class="boxes-container">
+        <div id="boxes"></div>
+    </div>
+
+    <div id="practice-pixel">
+        This is a practice pixel.
     </div>
     
 </body>
