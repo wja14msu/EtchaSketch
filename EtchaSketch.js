@@ -5,7 +5,7 @@ function createGrid() {
     // Clear previous grid
     gridContainer.innerHTML = "";
 
-    // Set grid template columns based on grid size
+    // Set grid template columns based on grid sizee
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
     // Create grid items
