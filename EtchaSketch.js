@@ -1,16 +1,18 @@
-const form = document.getElementById('inputForm');
+function createGrid() {
+    let gridSize = parseInt(document.getElementById("grid-size").value);
+    let gridContainer = document.getElementById("grid-container");
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
+    // Clear previous grid
+    gridContainer.innerHTML = "";
 
-    let input = form.querySelector('input');
-    let boxInput = input.value;
-    let box = document.getElementById('boxes');
-    for (let i = 1; i <= boxInput; i++) {
-        let div = document.createElement('div');
-        div.textContent = `Box-${i}`
-        box.appendChild(div);
+    // Set grid template columns based on grid size
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+    // Create grid items
+    for (let i = 0; i < gridSize; i++) {
+        let gridItem = document.createElement("div")
+        gridItem.classList.add("grid-item");
+        gridItem.textContent = i + 1;
+        gridContainer.appendChild(gridItem);
     }
-    console.log(boxInput);
-})
-
+}
