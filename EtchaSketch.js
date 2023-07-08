@@ -1,18 +1,24 @@
+const gridContainer = document.getElementById("grid-container");
+let gridSize = 24;
+
+
 function createGrid() {
-    let gridSize = parseInt(document.getElementById("grid-size").value);
-    let gridContainer = document.getElementById("grid-container");
+    let gridWidth = gridContainer.offsetWidth / gridSize;
+    //let gridSize = document.getElementById("grid-size").value;
 
     // Clear previous grid
     gridContainer.innerHTML = "";
 
     // Set grid template columns based on grid sizee
-    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize - 3}, ${gridWidth}px) 1fr 1fr 1fr`;
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize - 3}, ${gridWidth}px) 1fr 1fr 1fr`;
+    }
 
     // Create grid items
-    for (let i = 0; i < gridSize; i++) {
-        let gridItem = document.createElement("div")
-        gridItem.classList.add("grid-item");
-        gridItem.textContent = i + 1;
-        gridContainer.appendChild(gridItem);
+    for (let i = 0; i < gridSize ** 2; i++) {
+        const square = document.createElement("div")
+        square.classList.add("grid-item");
+        square.setAttribute('draggable', 'false');
+        gridContainer.appendChild(square);
     }
 }
