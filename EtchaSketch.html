@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etcha Sketch</title>
-    <script src="EtchaSketch.js" defer></script>
+    <title>WillyCinco's Etch a Sketch</title>
     <link rel="stylesheet" href="EtchaSketch.css">
+    <script src="EtchaSketch.js" defer></script>
 </head>
 <body>
-    
-    
-    <label for="grid-size">Enter grid size: </label>>
-    <input type="number" id="grid-size">
-    <button onclick="createGrid()">Create Grid</button>
-    
-    <div id="grid-container"></div>
+    <header>WillyCinco's Etch a Sketch</header>
 
-    <!--<div id="practice-pixel">
-        This is a practice pixel..
+    <div class="sliderAndValue">
+        <input type="range" min="2" max="100" value="16" id="slider">
+        <p class="value">16</p>
     </div>
-    -->
+
+    <div class="options-container">
+        <div class="buttons">
+            <button id="black">Black</button>
+            <div id="color-selector">
+                <p>Select color</p>
+                <input type="color" id="color">
+            </div>
+            <button id="rgb">Randomize</button>
+            <button id="apply-reset">Apply/reset</button>
+        </div>    
+    </div>
+
+    <div class="grid"></div>
+
+    <footer>Made by: WillyCinco</footer>
 </body>
 </html>

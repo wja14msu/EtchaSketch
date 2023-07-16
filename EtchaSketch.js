@@ -1,27 +1,90 @@
-const gridContainer = document.getElementById("grid-container");
-let gridSize = 10;
-//let gridSize = document.getElementById("grid-size").value;
-
+const grid = document.querySelector('.grid');
 
 function createGrid() {
-    //gridContainer.innerHTML = "";
+  for (let i = 0; i < 256; i++) {
+    const div = document.createElement('div');
+    div.classList.add('cell');
+    div.addEventListener('mouseover', function(e) {
+      e.target.style.backgroundColor = 'black';
+    })
+    grid.appendChild(div);
+  }
+};
 
-    let gridWidth = gridContainer.offsetWidth / gridSize;
-    gridSize = document.getElementById("grid-size").value;
+function removeAllChildNodes(parent) {
+  while(parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 
-    // Clear previous grid
-    //gridContainer.innerHTML = "";
+function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
-    // Set grid template columns based on grid sizee
-    gridContainer.style.gridTemplateColumns = `repeat(${gridSize - 3}, ${gridWidth}px) 1fr 1fr 1fr`;
-    //gridContainer.style.gridTemplateRows = `repeat(${gridSize - 3}, ${gridWidth}px) 1fr 1fr 1fr`;
-    }
+const slider = document.querySelector('#slider')
+const screenVal = document.querySelector('.value')
+slider.addEventListener('input', function() {
+  let val = document.getElementById('slider').value;
+  screenVal.textContent = val;
+  //console.log("screenVal: ", screenVal, ", val", val);
+  removeAllChildNodes(grid);
+  grid.setAttribute('style', `grid-template-columns: repeat(${val}, 2fr); grid-template-rows: repeat(${val}, 2fr);`);
+  for (let i = 0; i < val*val; i++) {
+    const div = document.createElement('div');
+    div.classList.add('cell');
+    div.addEventListener('mouseover', function(e) {
+      e.target.style.backgroundColor = 'black';
+    })
+    grid.appendChild(div);
+  }
+});
 
-    // Create grid items
-    for (let i = 0; i <= gridSize ** 2; i++) {
-        const square = document.createElement("div")
-        square.classList.add("grid-item");
-        square.setAttribute('draggable', 'false');
-        square.textContent = "box" + `${i}`;
-        gridContainer.appendChild(square);
-    }
+const reset = document.querySelector('#apply-reset');
+reset.addEventListener('click', function() {
+  let val = document.getElementById('slider').value;
+  let cell = grid.children;
+  for (let i = 0; i < val*val; i++) {
+    cell[i].style.backgroundColor = 'white';
+  }
+});
+
+const rgb = document.querySelector('#rgb');
+rgb.addEventListener('click', function() {
+  let val = document.getElementById('slider').value;
+  let cell = grid.children;
+  for (let i = 0; i < val * val; i++) {
+    cell[i].addEventListener('mouseover', function(e) {
+      e.target.style.backgroundColor = getRandomColor();
+    })
+  }
+});
+
+const black = document.querySelector('#black');
+black.addEventListener('click', function() {
+  let val = document.getElementById('slider').value;
+  let cell = grid.children;
+  for (let i = 0; i < val * val; i++) {
+    cell[i].addEventListener('mouseover', function(e) {
+      e.target.style.backgroundColor = 'black';
+    })
+  }
+});
+
+const chooseColor = document.querySelector('#color');
+chooseColor.addEventListener('input', function() {
+  let val = document.getElementById('slider').value;
+  let newColor = document.getElementById('color').value;
+  let cell = grid.children;
+  for (let i = 0; i < val * val; i++) {
+    cell[i].addEventListener('mouseover', function(e) {
+      e.target.style.backgroundColor = newColor;
+    })
+  }
+});
+
+createGrid();
